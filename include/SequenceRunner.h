@@ -8,6 +8,11 @@
 #ifndef SEQUENCERUNNER_H_
 #define SEQUENCERUNNER_H_
 
+
+#ifdef BOOST_NO_CXX11_VARIADIC_TEMPLATES
+#include "pre_c++11/SequenceRunner_pre_c++11.h"
+#else
+
 #include <boost/mpl/if.hpp>
 #include <boost/mpl/for_each.hpp>
 #include <boost/mpl/vector.hpp>
@@ -31,7 +36,6 @@ public:
 	static const int value = 0;
 };
 
-#ifndef BOOST_NO_CXX11_VARIADIC_TEMPLATES
 template<typename Chooser, typename Seq, typename T, typename... Ts> class SequenceRunner
 {
 public:
@@ -64,33 +68,7 @@ public:
 		c( f );
 	}
 };
-#else
-template<typename Chooser, typename Seq, typename T, typename T1=NIL, typename T2=NIL> class SequenceRunner
-{
-public:
-	template<typename S> void operator()(S)
-	{
-		typedef SequenceRunner<Chooser, typename mpl::push_back<Seq,S>::type,T1,T2,NIL> VSub;
-		mpl::for_each<T>( VSub() );
-	}
-};
 
-template<typename Chooser, typename Seq> class SequenceRunner<Chooser, Seq, NIL, NIL, NIL>
-{
-public:
-	template<typename S> void operator()(S)
-	{
-		typedef typename mpl::push_back<Seq,S>::type finalSeq;
-
-		finalSeq f;
-
-		Chooser c;
-		c( f );
-	}
-};
 #endif
-
-
-
 
 #endif /* SEQUENCERRUNNER_H_ */

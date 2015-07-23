@@ -4,17 +4,10 @@
  *      Author: vogt
  */
 
-#ifndef SEQUENCERUNNERFRONTEND_H_
-#define SEQUENCERUNNERFRONTEND_H_
+#ifndef SEQUENCERUNNERFRONTEND_PRE_CPP11_H_
+#define SEQUENCERUNNERFRONTEND_PRE_CPP11_H_
 
-#include "SequenceRunner.h"
-
-#ifdef BOOST_NO_CXX11_VARIADIC_TEMPLATES
-#warning cannot use variadic templates: RuntimeChooser limited to 4 arguments
-#include "pre_c++11/SequenceRunnerFrontend_pre_c++11.h"
-#else
-
-template<typename Chooser, typename T, typename... Ts> class SequenceRunnerFrontend
+template<typename Chooser, typename T0, typename T1=NIL, typename T2=NIL, typename T3=NIL> class SequenceRunnerFrontend
 {
 public:
 	typedef mpl::vector<> Seq;
@@ -23,7 +16,6 @@ public:
 	{
 		init();
 	}
-
 
 	void run( size_t id )
 	{
@@ -56,10 +48,9 @@ private:
 
 	void exec()
 	{
-		typedef typename mpl::if_< mpl::bool_<(sizeof...(Ts) == 0)>, SequenceRunner<Chooser, Seq,NIL,NIL>, SequenceRunner<Chooser, Seq,Ts...,NIL> >::type VSub;
-		mpl::for_each<T>( VSub() );
+		typedef SequenceRunner<Chooser, Seq,T1,T2,T3> VSub;
+		mpl::for_each<T0>( VSub() );
 	}
 };
-#endif
 
 #endif
