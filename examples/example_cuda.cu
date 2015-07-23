@@ -23,7 +23,7 @@
 #include <boost/mpl/vector_c.hpp>
 #include <boost/mpl/placeholders.hpp>
 
-#include "../../cudacommon/LaunchBounds.h"
+#include "helper/LaunchBounds.h"
 #include "SequenceRunner.h"
 #include "RuntimeChooser.h"
 #include <boost/mpl/int.hpp>
@@ -31,9 +31,6 @@
 
 using mpl_::int_;
 using mpl_::bool_;
-
-//namespace mpl = boost::mpl;
-//using mpl::placeholders::_;
 
 /*
  * 1) make the lists

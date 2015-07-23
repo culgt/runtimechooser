@@ -4,7 +4,6 @@
 #include <boost/mpl/vector_c.hpp>
 #include <boost/mpl/placeholders.hpp>
 
-#include "../../cudacommon/LaunchBounds.h"
 #include "SequenceRunner.h"
 #include "RuntimeChooser.h"
 
