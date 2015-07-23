@@ -23,7 +23,7 @@
 #include <boost/mpl/vector_c.hpp>
 #include <boost/mpl/placeholders.hpp>
 
-#include "SequenceRunner.h"
+#include "SequenceRunnerFrontend.h"
 #include "RuntimeChooser.h"
 #include "helper/LaunchBounds.h"
 
