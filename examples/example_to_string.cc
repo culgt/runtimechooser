@@ -10,5 +10,5 @@ typedef mpl::vector<mpl::int_<4>, mpl::int_<8>, LaunchBounds<2,3> > aList;
 
 int main()
 {
-	cout << culgt::mpl::ListToString<aList>::getString() << endl;
+	cout << culgt::mplextension::ListToString<aList>::getString() << endl;
 }

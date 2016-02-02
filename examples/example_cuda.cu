@@ -24,7 +24,7 @@
 #include <boost/mpl/placeholders.hpp>
 
 #include "helper/LaunchBounds.h"
-#include "SequenceRunner.h"
+#include "SequenceRunnerFrontend.h"
 #include "RuntimeChooser.h"
 #include <boost/mpl/int.hpp>
 #include <boost/mpl/bool.hpp>
